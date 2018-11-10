@@ -151,7 +151,7 @@ def main():
         aid.clear()
 #入口
 if __name__ == "__main__":
-    lock = lock() #可以注释掉
+    # lock = lock() #可以注释掉
     main()
 
     
