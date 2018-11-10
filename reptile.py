@@ -126,9 +126,9 @@ def multi(id):
             #加锁爬的太慢 废弃
             #重新启用把需要加锁的添加到这里
     #     lock.release()
-        
-#主函数
-def main():
+
+# 远行线程
+def runthread():
     aid = []
     maxs = [0]
     times = time.time() #记录初始执行时间
@@ -149,6 +149,11 @@ def main():
             m.join() #等待进程队列里面的进程结束
         print("运行时间：{}".format(time.time()-times)) #打印开始到现在执行时间
         aid.clear()
+
+#主函数
+def main():
+    runthread()
+
 #入口
 if __name__ == "__main__":
     # lock = lock() #可以注释掉
