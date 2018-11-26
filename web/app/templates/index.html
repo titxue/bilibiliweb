@@ -7,9 +7,43 @@
   <!-- <link rel="stylesheet" href="layui"> -->
 </head>
 <body>
- 
+
+    <table id="demo" lay-filter="test"></table>
+
+    <!-- js代码 -->
+    <script src="{{ url_for('static', filename='layui.js') }}"></script>
+    <script>
+    layui.use('table', function(){
+      var table = layui.table;
+      
+      //第一个实例
+      table.render({
+        elem: '#demo'
+        ,height: 800
+        ,url: '/api/' //数据接口
+        ,page: true //开启分页
+        ,cols: [[ //表头
+          {field: 'b_aid', title: '视频ID', width:80, sort: true, fixed: 'left'}
+          ,{field: 'b_title', title: '视频标题', width:80}
+          ,{field: 'b_view', title: '播放数', width:80, sort: true}
+          ,{field: 'b_danmaku', title: '弹幕数', width:80} 
+          ,{field: 'b_reply', title: '回复数', width: 177}
+          ,{field: 'b_favorite', title: '收藏数', width: 80, sort: true}
+          ,{field: 'b_coin', title: '硬币数', width: 80, sort: true}
+          ,{field: 'b_share', title: '转发数', width: 80}
+          ,{field: 'b_like', title: '好评数', width: 135, sort: true}
+          ,{field: 'b_dislike', title: '差评数', width: 135, sort: true}
+          ,{field: 'b_desc', title: '简介', width: 135, sort: true}
+          ,{field: 'b_tname', title: '分类', width: 135, sort: true}
+          ,{field: 'b_mid', title: '作者ID', width: 135, sort: true}
+          ,{field: 'b_name', title: '作者昵称', width: 135, sort: true}
+        ]]
+      });
+      
+    });
+    </script>
 <!-- 你的HTML代码 -->
-<table class="layui-table">
+<!-- <table class="layui-table">
     <colgroup>
       <col width="150">
       <col width="200">
@@ -36,7 +70,7 @@
     <tbody>
       {% for post in posts %}
       <tr>
-        <td>{{post[0]}}</td>
+        <td>{{post["b_aid"]}}</td>
         <td>{{post[1]}}</td>
         <td>{{post[2]}}</td>
         <td>{{post[3]}}</td>
@@ -53,6 +87,6 @@
       </tr>
       {% endfor %}
     </tbody>
-  </table>
+  </table> -->
 </body>
 </html>
